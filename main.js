@@ -1,5 +1,5 @@
 const input = require('prompt-sync')();
-const trapezoid = require('./trapezoid/trapezoid.js')
+const trapezoid = require('./trapezoid.js')
 
 const menu = "=== MENU ===\n1. rectangle\n2. triangle\n3. trapezoid\n4. Break\n============";
 
