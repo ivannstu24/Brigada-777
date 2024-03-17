@@ -19,15 +19,27 @@ function calculateCircleParameters(radius, alpha)
 }
 
 
-rl.question('Введите радиус окружности : ', (radius) => {
-  rl.question('Введите градусную меру угла дуги, на которую опирается сектор : ', (alpha) => {
-// вычисляем параметры окружности
-    const circle = calculateCircleParameters(parseFloat(radius), parseFloat(alpha));
-    console.log(`Длина окружности: ${circle.cicleLength}`);
-    console.log(`Площадь круга: ${circle.circleArea}`);
-    console.log(`Площадь кругового сектора: ${circle.circleSector}`);
-
-    rl.close();
+function getInput(prompt) {
+  return new Promise((resolve) => {
+    rl.question(prompt, (answer) => {
+      resolve(answer);
+    });
   });
-});
+}
+
+
+
+async function main() {
+  const radius = await getInput('Введите радиус окружности : ');
+  const alpha = await getInput('Введите градусную меру угла дуги, на которую опирается сектор : ');
+
+  const circle = calculateCircleParameters(parseFloat(radius), parseFloat(alpha));
+  console.log(`Длина окружности: ${circle.circleLength}`);
+  console.log(`Площадь круга: ${circle.circleArea}`);
+  console.log(`Площадь кругового сектора: ${circle.circleSector}`);
+
+  rl.close();
+}
+
+main();
 
