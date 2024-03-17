@@ -1,33 +1,33 @@
-// ®¤ª«îç ¥¬ ¬®¤ã«ì readline ¤«ï à ¡®âë á ¢¢®¤®¬/¢ë¢®¤®¬
+// Подключаем модуль readline для работы с вводом/выводом
 const readline = require('readline');
 
 
-// ‘®§¤ ¥¬ ¨­â¥àä¥©á ¤«ï çâ¥­¨ï ¨§ áâ ­¤ àâ­®£® ¢¢®¤  ¨ § ¯¨á¨ ¢ áâ ­¤ àâ­ë© ¢ë¢®¤
+// Создаем интерфейс для чтения из стандартного ввода и записи в стандартный вывод
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
 
-//”ã­ªæ¨ï ¤«ï ¢ëç¨á«¥­¨ï ¯ à ¬¥âà®¢ ®ªàã¦­®áâ¨
+//Функция для вычисления параметров окружности
 function calculateCircleParameters(radius, alpha)
 {
-  const circleLength = 2 * Math.PI * radius; //¢ëç¨á«¥­¨¥ ¤«¨­ë ®ªàã¦­®áâ¨
-  const circleArea = Math.PI * radius * radius; //¢ëç¨á«¥­¨¥ ¯«®é ¤¨ ªàã£ 
-  const circleSector = (Math.PI * radius * radius * alpha)/360; //¢ëç¨á«¥­¨¥ ¯«®é ¤¨ ªàã£®¢®£® á¥ªâ®à 
+  const circleLength = 2 * Math.PI * radius;  //вычисление длины окружности
+  const circleArea = Math.PI * radius * radius; //вычисление площади круга
+  const circleSector = (Math.PI * radius * radius * alpha)/360; //вычисление площади кругового сектора
   return { circleLength, circleArea, circleSector };
 }
 
 
-rl.question('‚¢¥¤¨â¥ à ¤¨ãá ®ªàã¦­®áâ¨ : ', (radius) => {
-  rl.question('‚¢¥¤¨â¥ £à ¤ãá­ãî ¬¥àã ã£«  ¤ã£¨, ­  ª®â®àãî ®¯¨à ¥âáï á¥ªâ®à : ', (alpha) => {
-// ¢ëç¨á«ï¥¬ ¯ à ¬¥âàë ®ªàã¦­®áâ¨
+rl.question('Введите радиус окружности : ', (radius) => {
+  rl.question('Введите градусную меру угла дуги, на которую опирается сектор : ', (alpha) => {
+// вычисляем параметры окружности
     const circle = calculateCircleParameters(parseFloat(radius), parseFloat(alpha));
-    console.log(`„«¨­  ®ªàã¦­®áâ¨: ${circle.cicleLength}`);
-    console.log(`«®é ¤ì ªàã£ : ${circle.circleArea}`);
-    console.log(`«®é ¤ì ªàã£®¢®£® á¥ªâ®à : ${circle.circleSector}`);
+    console.log(`Длина окружности: ${circle.cicleLength}`);
+    console.log(`Площадь круга: ${circle.circleArea}`);
+    console.log(`Площадь кругового сектора: ${circle.circleSector}`);
 
     rl.close();
   });
 });
-
+    
