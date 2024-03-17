@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 //Функция для вычисления параметров окружности
 function calculateCircleParameters(radius, alpha)
 {
-  const cicleLength = 2 * Math.PI * radius;  //вычисление длины окружности
+  const circleLength = 2 * Math.PI * radius;  //вычисление длины окружности
   const circleArea = Math.PI * radius * radius; //вычисление площади круга
   const circleSector = (Math.PI * radius * radius * alpha)/360; //вычисление площади кругового сектора
   return { circleLength, circleArea, circleSector };
