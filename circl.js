@@ -12,6 +12,9 @@ const rl = readline.createInterface({
 //вычисляем параметры окружности
 function calculateCircleParameters(radius, alpha)
 {
+  if (radius<0) {
+    throw new  RangeError(' радиус не может быть отрицательным');
+}
   const circleLength = 2 * Math.PI * radius; //длина окружности
   const circleArea = Math.PI * radius * radius; //площадь круга
   const circleSector = (Math.PI * radius * radius * alpha)/360; //площадь кругового сектора
@@ -31,6 +34,7 @@ function getInput(prompt) {
 
 async function main() {
   const radius = await getInput('радиус окружности: ');
+
   const alpha = await getInput('градусная мера дуги на которую опирается сектор : ');
 
   const circle = calculateCircleParameters(parseFloat(radius), parseFloat(alpha));
