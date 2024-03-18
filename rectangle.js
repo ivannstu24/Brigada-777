@@ -16,7 +16,7 @@ function calculateRectangleParameters(length, width) {
   return { perimeter, area, diagonal };
 }
 
-
+// test comment
 rl.question('Введите длину прямоугольника: ', (length) => {
   rl.question('Введите ширину прямоугольника: ', (width) => {
     // Вычисляем параметры прямоугольника, преобразуя введенные значения в числа с помощью parseFloat

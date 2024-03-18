@@ -1,20 +1,23 @@
-// Подключаем модуль readline для работы с вводом/выводом
+
 const readline = require('readline');
 
 
-// Создаем интерфейс для чтения из стандартного ввода и записи в стандартный вывод
+// ╤Д╤Г╨╜╨║╤Ж╨╕╤П ╨▓╨▓╨╛╨┤╨░-╨▓╤Л╨▓╨╛╨┤╨░
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
 
-//Функция для вычисления параметров окружности
+//╨▓╤Л╤З╨╕╤Б╨╗╤П╨╡╨╝ ╨┐╨░╤А╨░╨╝╨╡╤В╤А╤Л ╨╛╨║╤А╤Г╨╢╨╜╨╛╤Б╤В╨╕
 function calculateCircleParameters(radius, alpha)
 {
-  const circleLength = 2 * Math.PI * radius; //вычисление длины окружности
-  const circleArea = Math.PI * radius * radius; //вычисление площади круга
-  const circleSector = (Math.PI * radius * radius * alpha)/360; //вычисление площади кругового сектора
+  if (radius<0) {
+    throw new  RangeError(' ╤А╨░╨┤╨╕╤Г╤Б ╨╜╨╡ ╨╝╨╛╨╢╨╡╤В ╨▒╤Л╤В╤М ╨╛╤В╤А╨╕╤Ж╨░╤В╨╡╨╗╤М╨╜╤Л╨╝');
+}
+  const circleLength = 2 * Math.PI * radius; //╨┤╨╗╨╕╨╜╨░ ╨╛╨║╤А╤Г╨╢╨╜╨╛╤Б╤В╨╕
+  const circleArea = Math.PI * radius * radius; //╨┐╨╗╨╛╤Й╨░╨┤╤М ╨║╤А╤Г╨│╨░
+  const circleSector = (Math.PI * radius * radius * alpha)/360; //╨┐╨╗╨╛╤Й╨░╨┤╤М ╨║╤А╤Г╨│╨╛╨▓╨╛╨│╨╛ ╤Б╨╡╨║╤В╨╛╤А╨░
   return { circleLength, circleArea, circleSector };
 }
 
@@ -30,13 +33,14 @@ function getInput(prompt) {
 
 
 async function main() {
-  const radius = await getInput('Введите радиус окружности : ');
-  const alpha = await getInput('Введите градусную меру угла дуги, на которую опирается сектор : ');
+  const radius = await getInput('╤А╨░╨┤╨╕╤Г╤Б ╨╛╨║╤А╤Г╨╢╨╜╨╛╤Б╤В╨╕: ');
+
+  const alpha = await getInput('╨│╤А╨░╨┤╤Г╤Б╨╜╨░╤П ╨╝╨╡╤А╨░ ╨┤╤Г╨│╨╕ ╨╜╨░ ╨║╨╛╤В╨╛╤А╤Г╤О ╨╛╨┐╨╕╤А╨░╨╡╤В╤Б╤П ╤Б╨╡╨║╤В╨╛╤А : ');
 
   const circle = calculateCircleParameters(parseFloat(radius), parseFloat(alpha));
-  console.log(`Длина окружности: ${circle.circleLength}`);
-  console.log(`Площадь круга: ${circle.circleArea}`);
-  console.log(`Площадь кругового сектора: ${circle.circleSector}`);
+  console.log(`╨┤╨╗╨╕╨╜╨░ ╨╛╨║╤А╤Г╨╢╨╜╨╛╤Б╤В╨╕: ${circle.circleLength}`);
+  console.log(`╨┐╨╗╨╛╤Й╨░╨┤╤М ╨║╤А╤Г╨│╨░┬а: ${circle.circleArea}`);
+  console.log(`╨┐╨╗╨╛╤Й╨░╨┤╤М ╨║╤А╤Г╨│╨╛╨▓╨╛╨│╨╛ ╤Б╨╡╨║╤В╨╛╤А╨░┬а: ${circle.circleSector}`);
 
   rl.close();
 }
